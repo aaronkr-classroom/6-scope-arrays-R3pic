@@ -1,3 +1,5 @@
+﻿// 2d_arr.c
+
 #include <stdio.h>
 
 #define NUM_STDS 3
@@ -8,24 +10,26 @@ float calcAvg(int data[]) {
 	for (int i = 0; i < NUM_GRADES; i++) {
 		sum += data[i];
 	}
-	// (85 + 45 + 70 + 93) / 4 = 73.25
-	return sum / (float)NUM_GRADES;
+	// 85+ 45 + 70 + 93 / 4 = 73.25
+	return sum / (float)NUM_GRADES; 
 }
 
-int main(void) {
-	int grades[NUM_STDS][NUM_GRADES] = {
-		{85, 45, 70, 93},
-		{74, 86, 93, 45},
-		{67, 37, 99, 97}
+int main() {
+	int grades[NUM_STDS][NUM_GRADES] = { // [3학생][4개의 점수]
+		{85, 45, 70, 93}, // 학생 1
+		{74, 86, 93, 45}, // 학생 2
+		{67, 37, 99, 97}  // 학생 3
 	};
 
-	printf("Student grades:\n");
-	for (int i = 0; i < NUM_STDS; i++) {
-		printf("Student %d: ", i + 1);
-		for (int j = 0; j < NUM_GRADES; j++) {
-			printf("%d ", grades[i][j]);
+	// 각 학생의 점수 출력
+	printf("Student grades: \n");
+	for (int i = 0; i < NUM_STDS; i++) { //모든 학생의 루프
+		printf("Student %d: ", i + 1);//0 인덱스 때문에 1부터 시작
+		for (int j = 0; j < NUM_GRADES; j++) { // 이 학생의 모든 점수 루프
+			printf("%d ", grades[i][j]); // grades[학생][점수] 위치
 		}
-		printf("Average: %.2f\n", calcAvg(grades[i]));
+		printf("Average: %.2f\n",calcAvg(grades[i]));
 	}
+
 	return 0;
 }

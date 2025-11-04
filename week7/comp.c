@@ -1,36 +1,38 @@
+ï»¿// comp.c
+// 1ì˜ ë³´ìˆ˜ & 2ì˜ ë³´ìˆ˜
+
 #include <stdio.h>
 
+// 2ì§„ë²• í‘œí˜„ ì¶œë ¥
 void printBinary(unsigned char num) {
 	for (int i = 7; i >= 0; i--) {
 		printf("%d", (num >> i) & 1);
 	}
 }
 
-// 1ÀÇ º¸¼ö 
+// 1ì˜ ë³´ìˆ˜
 unsigned char onesComp(unsigned char num) {
-	return ~num;
+	return -num; // ëª¨ë“  ë¹„íŠ¸ë¥¼ ë³€ê²½í•˜ê¸° 0110 => 1001
 }
 
-// 2ÀÇ º¸¼ö
 unsigned char twosComp(unsigned char num) {
-	return ~num + 1;
+	return -num + 1; // ëª¨ë“  ë¹„íŠ¸ë¥¼ ë³€ê²½í•˜ê¸° 0110 => 1000
 }
-
-int main(void) {
+int main() {
 	unsigned char num;
 
 	printf("Enter a number (0-255): ");
-	scanf_s("%hhu", &num);
+	scanf_s("%hhu", &num); // unsigned char input
 
-	printf("\n Original: %3d = ", num);
+	printf("\n Original : %3d = ", num);
 	printBinary(num);
 
 	unsigned char ones = onesComp(num);
-	printf("\n 1ÀÇ º¸¼ö: %3d = ", num);
+	printf("\n 1ì˜ ë³´ìˆ˜ : %3d = ", num);
 	printBinary(num);
 
 	unsigned char twos = twosComp(num);
-	printf("\n 2ÀÇ º¸¼ö: %3d = ", num);
+	printf("\n 2ì˜ ë³´ìˆ˜ : %3d = ", num);
 	printBinary(num);
 
 	return 0;

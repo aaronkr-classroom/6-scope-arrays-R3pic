@@ -1,14 +1,18 @@
-#include <stdio.h> 
+﻿// 11_Q2.c
 
-int result;
+#include <stdio.h>
 
-void Test() {
-	int result = 5;
+int result; //전역 변수
+
+void Test()
+{
+	int result = 5; //지역 변수 (충돌?)
 	result++;
 }
-
-int main(void) {
+void main(void)
+{
 	Test();
-	printf("result: %d", result);
+	printf("result : %d", result); // 0, null
+
 	return 0;
 }

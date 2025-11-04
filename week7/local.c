@@ -1,13 +1,16 @@
-﻿#include <stdio.h>
+﻿//local.c (지역 변수)
+
+#include <stdio.h>
 
 int Sum(int x, int y) {
-	return x + y;
+	
+	int result = x + y; 
+	return result;
 }
 
-int main(void) {
+int main() {
 	int a = 3, b = 5;
-
-	printf("%d + %d = %d", a, b, Sum(a, b));
-
+	result = Sum(a, b);
+	printf("%d + %d = %d", a, b, result);
 	return 0;
 }

@@ -1,42 +1,44 @@
-﻿#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+﻿// GL_game.c
 
-int rand_num;
+#include <stdio.h>
+#include <stdlib.h> // rand(), srand()
+#include <time.h> // time()
 
-void gameInit(void) {
-	srand(time(0));
-	rand_num = rand() % 10 + 1;
+int rand_num; // 전역변수
+
+void gameInit() {
+	srand(time(0)); // 1970년 1월 1일 00:00시부터 현재까지 ms 값
+	rand_num = rand() % 10 + 1; // (0~9) + 1 = [1,10] 
 }
+void gamePlay() {
+	// 지역변수
+	int guess = 0, count = 0, allowed = 5; // 5개 추축만 가능
 
-void gamePlay(void) {
-	int guess = 0, count = 0, allowed = 5;
-
-	printf("Guess the number (1-10): ");
+	
 	do {
+		printf("Guess the number (1-10): ");
 		scanf_s("%d", &guess);
 		count++;
 
-		if (guess == rand_num) {
-			printf("정답! Good! You win!");
+		if(guess == rand_num) {
+			printf("정답! Good! You Win!\n");
 			break;
 		}
-		else if (guess < rand_num) {
-			printf("Too low! Try higher! ");
+		else if(guess < rand_num) {
+			printf("Too low! Try higher!\n");
 		}
-		else if (guess < rand_num) {
-			printf("Too high! Try lower! ");
+		else if(guess > rand_num) {
+			printf("Too High! Try lower!\n");
 		}
 	} while (count != allowed);
 
-	if (count > allowed) {
-		printf("Too many guesses! You lose!");
+	if (count == allowed) {
+		printf("Too many guesses! You Lose!\n");
 	}
 }
 
-int main(void) {
+int main() {
 	gameInit();
 	gamePlay();
-
 	return 0;
 }
